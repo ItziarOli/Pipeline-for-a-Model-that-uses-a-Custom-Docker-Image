@@ -6,7 +6,7 @@ import datetime
 client = boto3.client('sts')
 account = client.get_caller_identity()['Account']
 
-role = "arn:aws:iam::963778699255:role/service-role/AmazonSageMaker-ExecutionRole-20190723T151113" #get_execution_role()
+role = "arn:aws:iam::827978678406:role/service-role/AmazonSageMaker-ExecutionRole-20210107T095843" #get_execution_role()
 
 today = datetime.datetime.now()
 dateAsString = today.strftime('%Y%m%d%H%M') 
@@ -14,14 +14,14 @@ dateAsString = today.strftime('%Y%m%d%H%M')
 region = boto3.Session().region_name
 sagemaker_session = sagemaker.session.Session()
 bucket = sagemaker_session.default_bucket()
-prefix = 'anomaly-ml-image' + dateAsString
+prefix = 'anomaly-ml-image-io' + dateAsString
 job_name = "anomaly-detection-" + dateAsString 
 model_name = "anomaly-detection-model-" + dateAsString
 print(region)
 print(role)
 print(bucket)
 
-docker_image_name = account + ".dkr.ecr.eu-west-1.amazonaws.com/anomalyimage:latest"
+docker_image_name = account + ".dkr.ecr.eu-west-1.amazonaws.com/anomalyimage-io:latest"
 
 
 
