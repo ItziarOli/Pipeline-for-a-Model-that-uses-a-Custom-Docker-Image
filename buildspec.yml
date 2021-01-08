@@ -12,8 +12,8 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...    
       - cd docker
-      - docker build -t anomalyimage:latest .
-      - docker tag anomalyimage:latest ${account}.dkr.ecr.eu-west-1.amazonaws.com/anomalyimage-io:latest
+      - docker build -t anomalyimage-io:latest .
+      - docker tag anomalyimage-io:latest ${account}.dkr.ecr.eu-west-1.amazonaws.com/anomalyimage-io:latest
   post_build:
     commands:
       - account=$(aws sts get-caller-identity --query Account --output text)
